@@ -22,16 +22,19 @@ public class AccountService {
 
     /**
      * 
-     * @param entity
-     * @return
+     * @param entity Account object
+     * @return Success: 200, registered Account
+     *         Fail: 409 - Conflict
+     *         Fail: 400 - Bad Request
      * @throws CustomException
      */
     public ResponseEntity<Account> createNewUser( Account entity ) throws CustomException {
         // validation
         if( entity.getUsername().isEmpty() || 
-            entity.getPassword().length() < 4 ||
-            accountRepository.findByUsername( entity.getUsername() ) != null ) 
+            entity.getPassword().length() < 4 )
             return ResponseEntity.status( HttpStatus.BAD_REQUEST ).body( null );
+        if( accountRepository.findByUsername( entity.getUsername() ) != null ) 
+            return ResponseEntity.status( HttpStatus.CONFLICT ).body( null );
            
         Account created_account = accountRepository.save( entity );
         
@@ -40,8 +43,9 @@ public class AccountService {
 
     /**
      * 
-     * @param account
-     * @return
+     * @param account Account object
+     * @return Success: 200, logged in Account
+     *         Fail: 401 - Unauthorized
      * @throws CustomException
      */
     public ResponseEntity<Account> userLogin( Account account ) throws CustomException {

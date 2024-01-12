@@ -11,8 +11,8 @@ import java.util.List;
 public interface MessageRepository extends JpaRepository< Message, Integer > {
     /**
      * 
-     * @param posted_by
-     * @return
+     * @param posted_by account_id from Messages FK
+     * @return List of messages by accout_id = posted_by
      */
     @Query( value="SELECT * FROM message m WHERE m.posted_by = :posted_by", nativeQuery=true )
     List<Message> findMessagesByPostedBy( @Param("posted_by") Integer posted_by );

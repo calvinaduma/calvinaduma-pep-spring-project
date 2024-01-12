@@ -29,8 +29,8 @@ public class SocialMediaController {
 
     /**
      * 
-     * @param account
-     * @return
+     * @param account Account to be registered in database
+     * @return registered Account
      * @throws CustomException
      */
     @PostMapping( "register" )
@@ -40,8 +40,8 @@ public class SocialMediaController {
 
     /**
      * 
-     * @param account
-     * @return
+     * @param account Account to be logged in to database
+     * @return logged in Account
      * @throws CustomException
      */
     @PostMapping( "login" )
@@ -51,8 +51,8 @@ public class SocialMediaController {
 
     /**
      * 
-     * @param message
-     * @return
+     * @param message Message to be created in database
+     * @return created Message
      * @throws CustomException
      */
     @PostMapping( "messages" )
@@ -62,7 +62,7 @@ public class SocialMediaController {
 
     /**
      * 
-     * @return
+     * @return all messages in database
      */
     @GetMapping( "messages" )
     @ResponseStatus( HttpStatus.OK )
@@ -72,8 +72,8 @@ public class SocialMediaController {
  
     /**
      * 
-     * @param messageID
-     * @return
+     * @param message_id ID of message to be retrieved from database
+     * @return retrieved message
      * @throws CustomException
      */
     @GetMapping( "messages/{message_id}" )
@@ -84,8 +84,8 @@ public class SocialMediaController {
 
     /**
      * 
-     * @param messageID
-     * @return
+     * @param message_id ID of message to be deleted from database
+     * @return deleted message
      * @throws CustomException
      */
     @DeleteMapping( "messages/{message_id}" )
@@ -96,9 +96,9 @@ public class SocialMediaController {
 
     /**
      * 
-     * @param messageID
-     * @param message
-     * @return
+     * @param message_id ID of message to be updated in database
+     * @param message Message content to be placed in updated message in database
+     * @return updated message
      * @throws CustomException
      */
     @PatchMapping( "messages/{message_id}" )
@@ -108,8 +108,8 @@ public class SocialMediaController {
         
     /**
      * 
-     * @param accountID
-     * @return
+     * @param account_id ID of account to retrieve all messages from database
+     * @return all messages from account with account_id = account_id
      */
     @GetMapping( "accounts/{account_id}/messages" )
     @ResponseStatus( HttpStatus.OK )

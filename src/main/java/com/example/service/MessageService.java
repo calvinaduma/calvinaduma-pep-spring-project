@@ -27,8 +27,9 @@ public class MessageService {
 
     /**
      * 
-     * @param entity
-     * @return
+     * @param entity Message to be added to database
+     * @return Success: 200, created Message from database
+     *          Fail: 400 - Client Error
      * @throws CustomException
      */
     public ResponseEntity<Message> createNewMessage( Message entity ) throws CustomException {
@@ -49,7 +50,7 @@ public class MessageService {
     }
 
     /**
-     * @return
+     * @return all Messages in database
      */
     public List<Message> getAllMessages() {
         return messageRepository.findAll();
@@ -57,8 +58,8 @@ public class MessageService {
 
     /**
      * 
-     * @param message_id
-     * @return
+     * @param message_id ID of message to be retrieved from database
+     * @return 200, retrieved message
      * @throws CustomException
      */
     public Message getMessageByIDHandler( Integer message_id ) throws CustomException {
@@ -68,8 +69,8 @@ public class MessageService {
 
     /**
      * 
-     * @param message_id
-     * @return
+     * @param message_id ID of message to be deleted from database
+     * @return 200, number of Messages deleted
      * @throws CustomException
      */
     public String deleteMessageById( Integer message_id ) throws CustomException {
@@ -85,9 +86,10 @@ public class MessageService {
 
     /**
      * 
-     * @param message_id
-     * @param message
-     * @return
+     * @param message_id ID of message to be updated in database
+     * @param message Message content to update message in database
+     * @return  Success: 200, number of Messages updated
+     *          Fail: 400 - Client Error
      * @throws CustomException
      */
     public ResponseEntity<String> updateMessageByID( Integer message_id, Message message ) throws CustomException {
@@ -105,7 +107,7 @@ public class MessageService {
     }
 
     /**
-     * @return
+     * @return List of all messages from User
      */
     public List<Message> getAllMessagesFromUserByID( Integer posted_by ) {
         return messageRepository.findMessagesByPostedBy( posted_by );
