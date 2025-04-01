@@ -10,7 +10,7 @@ In The hypothetical micro-blogging or messaging app, any user should be able to 
 
 ## Database Tables 
 
-The following tables will be initialized in yThe project's built-in database upon startup using the configuration details in the application.properties file and the provided SQL script.
+The following tables will be initialized in the project's built-in database upon startup using the configuration details in the application.properties file and the provided SQL script.
 
 ### Account
 ```
@@ -32,13 +32,13 @@ foreign key (posted_by) references Account(account_id)
 
 ## Project must leverage the Spring Boot Framework
 
-Java classes have been provided, but yThe entire project MUST leverage the Spring framework.
+Java classes have been provided, but the entire project MUST leverage the Spring framework.
 In addition to functional test cases, "SpringTest" will verify that you have leveraged the Spring framework, Spring Boot, Spring MVC, and Spring Data.
 SpringTest will verify the following
 
  - That you have, by any means, have a bean for the AccountService, MessageService, AccountRepository, MessageRepository, and SocialMediaController classes
  - That AccountRepository and MessageRepository are working JPARepositories based on their corresponding Account and Message entities
- - That yThe Spring Boot app leverages MVC by checking for Spring's default error message structure.
+ - That the Spring Boot app leverages MVC by checking for Spring's default error message structure.
  
 The app will already be a Spring Boot app with a valid application.properties and valid database entities at the start.
 
